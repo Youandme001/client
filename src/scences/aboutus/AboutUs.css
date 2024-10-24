@@ -1,0 +1,76 @@
+
+/* About Section Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+
+.about-section1 {
+    padding: 140px 0;
+    background-color:#f0eae0;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 50px; /* Increase this value to add more space */
+}
+
+
+.about-header h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.about-header p {
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.about-content {
+    text-align: justify;
+    margin-top: 50px; /* Increase this value to add more space */
+}
+
+
+.about-content h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.about-content ul li:before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}

@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .content-container {
+    min-height: calc(100vh - 80px); /* Adjust 80px to match the height of your footer */
+    display: flex;
+    flex-direction: column;
+  }
+  .user-profile-container {
+    padding-top: 100px; /* Space between the header and the user profile */
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  .user-profile-content {
+    padding: 2rem;
+  }
+  
+  .user-profile-card {
+    margin-bottom: 2rem;
+  }
+  
+  .user-profile-title {
+    margin-bottom: 1rem;
+  }
+  
+  .user-command-history-title {
+    margin-bottom: 1rem;
+  }
+  
+  .command-card {
+    margin-bottom: 1rem;
+  }
+  .update-info-button {
+    margin-top: 1rem;
+  }
+  
+  .view-orders-button {
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .view-orders-button:hover {
+    background-color: #0056b3;
+  }
+  

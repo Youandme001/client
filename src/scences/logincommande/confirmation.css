@@ -1,0 +1,10 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .content-container {
+    min-height: calc(100vh - 80px); /* Adjust 80px to match the height of your footer */
+    display: flex;
+    flex-direction: column;
+  }
+  

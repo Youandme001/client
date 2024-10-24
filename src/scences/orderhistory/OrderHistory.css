@@ -1,0 +1,18 @@
+.order-history-container {
+    padding-top: 100px; /* Space between the header and the order history */
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  .order-history-content {
+    padding: 2rem;
+  }
+  
+  .order-history-title {
+    margin-bottom: 1rem;
+  }
+  
+  .command-card {
+    margin-bottom: 1rem;
+  }
+  

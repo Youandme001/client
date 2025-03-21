@@ -24,6 +24,8 @@ import LoginCommande from './scences/logincommande';
 import BoutiquePage from './scences/boutique';
 import OrderHistory from './scences/orderhistory';
 import './App.css'
+import DetailsCommande from './scences/DetailsCommande';
+import NotFound from './scences/NotFound';
 function App() {
   return (
     <div>
@@ -35,6 +37,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/product" element={<ProductForm />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/detailsComnde" element={<DetailsCommande />} />
         <Route path="/commande" element={<Commande />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
@@ -42,7 +45,7 @@ function App() {
         <Route path="/productdetail/:productId" element={<ProductDetail />} />
         <Route path="/checkinformation" element={<CheckInformation />} />
         <Route path="/userprofile/:userId" element={<UserProfile />} />
-        <Route path="/updateuser/:userId" element={<UpdateUser />} />
+        <Route path="/updateuser/:id" element={<UpdateUser />} />
         <Route path="/updatepassword/:userId" element={<UpdatePassword />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/aboutus" element={<AboutUs1 />} />
@@ -50,6 +53,7 @@ function App() {
         <Route path="/boutique" element={<BoutiquePage />} />
         <Route path="/orderhistory" element={<OrderHistory />} />
         {/* Define other routes */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     
       <Footer />

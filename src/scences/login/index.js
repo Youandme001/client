@@ -23,7 +23,7 @@ const Login = () => {
             localStorage.setItem('id', user.id);
             toast.success('Connexion réussie!');
             setUser({ id: user.id, ...user });
-            navigate('/userprofile/:userId');
+            navigate(`/userprofile/${user.id}`);
           } else {
             toast.error(message || 'Erreur de connexion. Veuillez réessayer.');
           }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './BoutiquePage.css';
- // Assuming home.css contains the styles for the product cards
+import './BoutiquePage.css'; // Ensure CSS is properly imported
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 function BoutiquePage() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate(); 
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -15,7 +15,11 @@ function BoutiquePage() {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        setProducts(data.data);
+
+        // ✅ Filter only products with volume > 0
+        const availableProducts = data.data.filter(product => product.volume > 0);
+
+        setProducts(availableProducts);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -45,9 +49,9 @@ function BoutiquePage() {
 
     localStorage.setItem('panier', JSON.stringify(cartItems));
 
-    toast.success('Product added to cart successfully!', {
+    toast.success('Produit ajouté au panier avec succès!', {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -55,22 +59,36 @@ function BoutiquePage() {
       progress: undefined,
     });
   };
+
   const handleProductClick = (productId) => {
     navigate(`/productdetail/${productId}`); // Navigate to the product detail page
   };
+
   return (
     <div className="boutique-page">
       <div className="products-grid">
-      {products.map((product, index) => (
-  <div key={index} className="item-container" onClick={() => handleProductClick(product.id)}>
-    <div className="item">
-      <img src={product.images[0].filepath ? product.images[0].filepath : ''} alt={product.name} />
-      <h3>{product.name}</h3>
-      <p className="price">Prix: {product.price} DT</p>
-      <button onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }} className="add-to-cart-btn">Ajouter au panier</button>
-    </div>
-  </div>
-))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div key={product.id} className="item-container" onClick={() => handleProductClick(product.id)}>
+              <div className="item">
+                <img 
+                  src={product.images.length > 0 ? product.images[0].filepath : 'default-image.jpg'} 
+                  alt={product.name} 
+                />
+                <h3>{product.name}</h3>
+                <p className="price">Prix: {product.price} DT</p>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }} 
+                  className="add-to-cart-btn"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="no-products">Aucun produit disponible</p> // ✅ Message if no products available
+        )}
       </div>
     </div>
   );

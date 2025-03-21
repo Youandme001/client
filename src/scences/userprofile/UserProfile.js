@@ -15,32 +15,34 @@ import {
 } from '@mui/material';
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './confirmation.css' // Import the CSS for styling
+import { toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
+import './confirmation.css'; // Import the CSS for styling
 
 const UserProfile = () => {
   const { user } = useContext(UserContext);
+  const { id } = useParams(); //
   const [userData, setUserData] = useState(null);
   const [commandes, setCommandes] = useState([]);
   const navigate = useNavigate();
-  const [token, setToken] = useState();
-  const [id, setId] = useState();
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const id = localStorage.getItem('id');
-    setToken(token);
-    setId(id);
-
+    const storedToken = localStorage.getItem('token');
+    if (!storedToken) {
+      navigate('/login'); // Redirect if not logged in
+      return;
+    }
+    setToken(storedToken);
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/user/${id}`, {
+        const res = await axios.get(`http://localhost:4000/user/${user.id}`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${storedToken}`,
           },
         });
-        const { data } = res.data;
-        setUserData(data);
+        setUserData(res.data.data);
+        console.log(res.data.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -48,13 +50,12 @@ const UserProfile = () => {
 
     const fetchCommandes = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/commande/userById/${id}`, {
+        const res = await axios.get(`http://localhost:4000/commande/userById/${user.id}`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${storedToken}`,
           },
         });
-        const { data } = res.data;
-        setCommandes(data);
+        setCommandes(res.data.data);
       } catch (error) {
         console.error('Error fetching user commands:', error);
       }
@@ -62,10 +63,10 @@ const UserProfile = () => {
 
     fetchUserData();
     fetchCommandes();
-  }, [id]);
+  }, []); // ✅ Removed `id` from dependencies
 
-  if (!userData || !commandes) {
-    return <div>Loading...</div>;
+  if (!userData) {
+    return <div>Loading...</div>; // ✅ Prevents null property access
   }
 
   return (
@@ -79,20 +80,21 @@ const UserProfile = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Typography variant="body1">
-                  <strong>Prénom:</strong> {userData.firstName}
+                  <strong>Prénom:</strong> {userData?.firstName}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body1">
-                  <strong>Nom de famille:</strong> {userData.lastName}
+                  <strong>Nom de famille:</strong> {userData?.lastName}
                 </Typography>
               </Grid>
-              <Grid item xs={12}>
-                <Typography variant="body1">
-                  <strong>Email:</strong> {userData.email}
-                </Typography>
-              </Grid>
-              {/* Add more fields as needed */}
+              {userData?.email && (
+                <Grid item xs={12}>
+                  <Typography variant="body1">
+                    <strong>Email:</strong> {userData.email}
+                  </Typography>
+                </Grid>
+              )}
             </Grid>
           </CardContent>
           <CardActions>
@@ -105,33 +107,37 @@ const UserProfile = () => {
         <Typography variant="h5" gutterBottom className="user-command-history-title">
           Historique des commandes
         </Typography>
-        <List>
-          {commandes.map((commande) => (
-            <Card key={commande.id} className="command-card">
-              <CardContent>
-                <ListItem>
-                  <ListItemText
-                    primary={`Commande ID: ${commande.id}`}
-                    secondary={`Total: ${commande.totalPrice} DT - Date: ${new Date(
-                      commande.commandeDate
-                    ).toLocaleDateString()} - Statut: ${commande.state}`}
-                  />
-                </ListItem>
-                <List>
-                  {commande.products.map((product, index) => (
-                    <ListItem key={index}>
-                      <ListItemText
-                        primary={`Produit ID: ${product.id}`}
-                        secondary={`Nom: ${product.name} - Quantité: ${product.quantity}`}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-              <Divider />
-            </Card>
-          ))}
-        </List>
+        {commandes.length === 0 ? (
+          <Typography>Aucune commande trouvée.</Typography>
+        ) : (
+          <List>
+            {commandes.map((commande) => (
+              <Card key={commande.id} className="command-card">
+                <CardContent>
+                  <ListItem>
+                    <ListItemText
+                      primary={`Commande ID: ${commande.id}`}
+                      secondary={`Total: ${commande.totalPrice} DT - Date: ${new Date(
+                        commande.commandeDate
+                      ).toLocaleDateString()} - Statut: ${commande.state}`}
+                    />
+                  </ListItem>
+                  <List>
+                    {commande.products?.map((product, index) => (
+                      <ListItem key={index}>
+                        <ListItemText
+                          primary={`Produit ID: ${product.id}`}
+                          secondary={`Nom: ${product.name} - Quantité: ${product.quantity}`}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </CardContent>
+                <Divider />
+              </Card>
+            ))}
+          </List>
+        )}
       </Container>
     </div>
   );

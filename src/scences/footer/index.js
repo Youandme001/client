@@ -11,7 +11,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer-content">
         <div className="footer-section about">
-          <h3>Soins de la Peau You & Me</h3>
+          <h3>Soins de la Peau Glowy</h3>
           <p>Votre parcours vers une peau plus saine et plus heureuse commence ici.</p>
           <p> Faites confiance à notre approche naturelle de la beauté.</p>
         </div>
@@ -30,20 +30,20 @@ function Footer() {
                  pour les dernières mises à jour.</p>
           <div className="social-icons">
             <a href="https://www.facebook.com/youandmetunisia" target="_blank" rel="noopener noreferrer" className="social-icon"><FacebookIcon /></a>
-            <a href="https://www.instagram.com/youandme_skincare" target="_blank" rel="noopener noreferrer" className="social-icon"><InstagramIcon /></a>
+            <a href="https://www.instagram.com/i_said_yass?igsh=MWI4dmFpdnVwdmMybQ%3D%3D" target="_blank" rel="noopener noreferrer" className="social-icon"><InstagramIcon /></a>
           </div>
         </div>
         <div className="footer-section contact">
           <h3>Informations de Contact</h3>
           <ul>
             <li><LocationOnIcon /> Adresse: Rue bouraoui zaanouni Jawhara sousse 4000</li>
-            <li><PhoneIcon /> Téléphone: 52 949 949</li>
+            <li><PhoneIcon /> Téléphone: 55036636 / 55037070</li>
             <li><EmailIcon /> Email: youandme.tunisia@gmail.com</li>
           </ul>
         </div>
       </div>
       <div className="footer-bottom">
-        &copy; 2024 Soins de la Peau You & Me. Tous droits réservés.
+        &copy; 2024 Soins de la Peau Glowy. Tous droits réservés.
       </div>
     </footer>
   );

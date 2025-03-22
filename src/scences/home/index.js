@@ -5,7 +5,7 @@ import backgroundVideo1 from './background1.mp4';
 import backgroundVideo2 from './background2.mp4';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 function HomePage() {
   const [products, setProducts] = useState([]);

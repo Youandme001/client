@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 import './confirmation.css'
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 const UpdateUser = () => {
   // const { user } = useContext(UserContext); // Use the user data from UserContext
   const [user, setUser]= useState({});

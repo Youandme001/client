@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css'
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 const CheckInformation = () => {
   const { user, setUser } = useContext(UserContext); // Use the user data and setUser function from UserContext
   const navigate = useNavigate();

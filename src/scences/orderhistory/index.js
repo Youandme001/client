@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography, List, ListItem, ListItemText, Card, CardContent, Divider } from '@mui/material';
 import axios from 'axios';
 import './OrderHistory.css'; // Import the CSS for styling
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const OrderHistory = () => {
   const [commandes, setCommandes] = useState([]);

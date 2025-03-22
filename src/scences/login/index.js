@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css' // Import the CSS for styling
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const Login = () => {
   const [email, setEmail] = useState('');

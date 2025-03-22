@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../components/firebase-config'; // Import your Firestore config
 import axios from 'axios'; 
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({

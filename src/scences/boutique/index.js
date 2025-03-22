@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BoutiquePage.css'; // Ensure CSS is properly imported
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 function BoutiquePage() {
   const [products, setProducts] = useState([]);

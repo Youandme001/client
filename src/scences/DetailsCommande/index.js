@@ -6,7 +6,7 @@ import axios from 'axios';
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css'
 import { LastPage, LastPageRounded } from '@material-ui/icons';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 const DetailsCommande =()=> {
     const { user, setUser } = useContext(UserContext); // Use the user data and setUser function from UserContext
       const navigate = useNavigate();

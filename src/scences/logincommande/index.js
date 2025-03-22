@@ -7,7 +7,7 @@ import { db } from '../../components/firebase-config';
 import  UserContext  from '../../contexts/UserContext'; // Import the UserContext
 import axios from 'axios'; 
 import './confirmation.css'
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 const LoginCommande = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

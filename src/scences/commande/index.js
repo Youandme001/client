@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
 import './confirmation.css';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const Commande = () => {
   const { user } = useContext(UserContext);

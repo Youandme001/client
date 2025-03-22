@@ -7,7 +7,7 @@ import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import './confirmation.css'
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 const UpdatePassword = () => {
   const { user } = useContext(UserContext); // Use the user data from UserContext
   const [oldPassword, setOldPassword] = useState('');

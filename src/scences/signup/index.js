@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import './confirmation.css' // Import the CSS for styling
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({

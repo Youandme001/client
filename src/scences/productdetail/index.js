@@ -5,7 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import './ProductDetail.css';
 import axios from 'axios'; 
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const ProductDetail = () => {
   const { productId } = useParams();

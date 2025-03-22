@@ -18,7 +18,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import './confirmation.css'; // Import the CSS for styling
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 const UserProfile = () => {
   const { user } = useContext(UserContext);

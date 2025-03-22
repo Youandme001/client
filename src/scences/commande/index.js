@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
 import './confirmation.css';
+import { API_BASE_URL } from '../../../config';
 
 const Commande = () => {
   const { user } = useContext(UserContext);
@@ -84,7 +85,7 @@ const Commande = () => {
       };
 
       console.log(token);
-      const res = await axios.post('http://localhost:4000/commande/create', commandeData, {
+      const res = await axios.post(`${API_BASE_URL}/commande/create`, commandeData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

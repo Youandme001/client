@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 import './confirmation.css'
+import { API_BASE_URL } from '../../../config';
 const UpdateUser = () => {
   // const { user } = useContext(UserContext); // Use the user data from UserContext
   const [user, setUser]= useState({});
@@ -29,7 +30,7 @@ const UpdateUser = () => {
   
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/user/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/user/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -57,7 +58,7 @@ const UpdateUser = () => {
 
   const handleUpdate = async (e) => {
         try {
-            const res = await axios.put(`http://localhost:4000/user/update/${id}`, userData,
+            const res = await axios.put(`${API_BASE_URL}/user/update/${id}`, userData,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

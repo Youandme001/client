@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css'
+import { API_BASE_URL } from '../../../config';
 const CheckInformation = () => {
   const { user, setUser } = useContext(UserContext); // Use the user data and setUser function from UserContext
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const CheckInformation = () => {
     e.preventDefault();
     try {
       console.log(userData);
-      const res = await axios.put(`http://localhost:4000/user/update/${user.id}`, userData,
+      const res = await axios.put(`${API_BASE_URL}/user/update/${user.id}`, userData,
       {
         headers: {
           Authorization: `Bearer ${token}`,

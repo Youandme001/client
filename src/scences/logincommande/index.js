@@ -7,6 +7,7 @@ import { db } from '../../components/firebase-config';
 import  UserContext  from '../../contexts/UserContext'; // Import the UserContext
 import axios from 'axios'; 
 import './confirmation.css'
+import { API_BASE_URL } from '../../../config';
 const LoginCommande = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +18,7 @@ const LoginCommande = () => {
     e.preventDefault();
     try {
       // Query the "users" collection for a document with the provided email and password
-      axios.post('http://localhost:4000/user/login', {email , password})
+      axios.post(`${API_BASE_URL}/user/login`, {email , password})
       .then(res => {
         const { token, message , user } = res.data;
         if (token) {

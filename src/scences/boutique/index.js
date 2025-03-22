@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BoutiquePage.css'; // Ensure CSS is properly imported
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../../config';
 
 function BoutiquePage() {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ function BoutiquePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/produit');
+        const response = await fetch(`${API_BASE_URL}/produit`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }

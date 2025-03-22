@@ -6,6 +6,7 @@ import axios from 'axios';
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css'
 import { LastPage, LastPageRounded } from '@material-ui/icons';
+import { API_BASE_URL } from '../../../config';
 const DetailsCommande =()=> {
     const { user, setUser } = useContext(UserContext); // Use the user data and setUser function from UserContext
       const navigate = useNavigate();
@@ -34,7 +35,7 @@ const DetailsCommande =()=> {
       
         try {
           console.log(userData);
-          const res = await axios.post(`http://localhost:4000/user/create1`, userData);
+          const res = await axios.post(`${API_BASE_URL}/user/create1`, userData);
       
           const { user: newUser, token } = res.data;
       

@@ -18,6 +18,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import './confirmation.css'; // Import the CSS for styling
+import { API_BASE_URL } from '../../../config';
 
 const UserProfile = () => {
   const { user } = useContext(UserContext);
@@ -36,7 +37,7 @@ const UserProfile = () => {
     setToken(storedToken);
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/user/${user.id}`, {
+        const res = await axios.get(`${API_BASE_URL}/user/${user.id}`, {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },
@@ -50,7 +51,7 @@ const UserProfile = () => {
 
     const fetchCommandes = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/commande/userById/${user.id}`, {
+        const res = await axios.get(`${API_BASE_URL}/commande/userById/${user.id}`, {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },

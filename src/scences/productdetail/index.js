@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import './ProductDetail.css';
 import axios from 'axios'; 
+import { API_BASE_URL } from '../../../config';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -14,7 +15,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/produit/${productId}`);
+        const response = await fetch(`${API_BASE_URL}/produit/${productId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }

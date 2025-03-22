@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import './confirmation.css' // Import the CSS for styling
+import { API_BASE_URL } from '../../../config';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.post('http://localhost:4000/user/login', { email, password })
+      axios.post(`${API_BASE_URL}/user/login`, { email, password })
         .then(res => {
           const { token, message, user } = res.data;
           if (token) {

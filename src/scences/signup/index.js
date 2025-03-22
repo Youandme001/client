@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import './confirmation.css' // Import the CSS for styling
+import { API_BASE_URL } from '../../../config';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ const SignUp = () => {
     }
     try {
       const { confirmPassword, ...userData } = formData;
-      axios.post('http://localhost:4000/user/create', userData)
+      axios.post(`${API_BASE_URL}/user/create`, userData)
         .then(res => {
           const { message } = res.data;
           if (message === "Email already exists") {

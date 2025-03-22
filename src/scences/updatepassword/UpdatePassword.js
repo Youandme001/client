@@ -7,6 +7,7 @@ import UserContext from '../../contexts/UserContext'; // Import the UserContext
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import './confirmation.css'
+import { API_BASE_URL } from '../../../config';
 const UpdatePassword = () => {
   const { user } = useContext(UserContext); // Use the user data from UserContext
   const [oldPassword, setOldPassword] = useState('');
@@ -28,7 +29,7 @@ const UpdatePassword = () => {
     }
       try {
         const res = await axios.put(
-          `http://localhost:4000/user/updatePasssword/${id}`,
+          `${API_BASE_URL}/user/updatePasssword/${id}`,
           { oldPassword, newPassword }, // Sending the current and new password in the request body
           {
             headers: {

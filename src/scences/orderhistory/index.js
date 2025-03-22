@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography, List, ListItem, ListItemText, Card, CardContent, Divider } from '@mui/material';
 import axios from 'axios';
 import './OrderHistory.css'; // Import the CSS for styling
+import { API_BASE_URL } from '../../../config';
 
 const OrderHistory = () => {
   const [commandes, setCommandes] = useState([]);
@@ -11,7 +12,7 @@ const OrderHistory = () => {
   useEffect(() => {
     const fetchCommandes = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/commande/userById/${id}`, {
+        const res = await axios.get(`${API_BASE_URL}/commande/userById/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

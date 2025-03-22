@@ -5,6 +5,7 @@ import backgroundVideo1 from './background1.mp4';
 import backgroundVideo2 from './background2.mp4';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../../config';
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ function HomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/produit');
+        const response = await fetch(`${API_BASE_URL}/produit`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }

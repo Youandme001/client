@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../components/firebase-config'; // Import your Firestore config
 import axios from 'axios'; 
+import { API_BASE_URL } from '../../../config';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const SignUp = () => {
     try {
       const { confirmPassword, ...userData } = formData;
       console.log(formData);
-      axios.post('http://localhost:4000/user/create', userData)
+      axios.post(`${API_BASE_URL}/user/create`, userData)
       .then(res => {
         if (res.data.message === "Email already exists") {
           toast.error('Email déjà utilisé');

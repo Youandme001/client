@@ -38,7 +38,7 @@ function Footer() {
           <ul>
             <li><LocationOnIcon /> Adresse: Rue bouraoui zaanouni Jawhara sousse 4000</li>
             <li><PhoneIcon /> Téléphone: 55036636 / 55037070</li>
-            <li><EmailIcon /> Email: youandme.tunisia@gmail.com</li>
+            <li><EmailIcon /> Email: glowy.nawressbriki@gmail.com</li>
           </ul>
         </div>
       </div>

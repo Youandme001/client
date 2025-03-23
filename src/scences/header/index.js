@@ -105,8 +105,17 @@ const Header = () => {
             <li><Link to="/" onClick={toggleMenu}>ACCUEIL</Link></li>
             <li><Link to="/about" onClick={toggleMenu}>À PROPOS</Link></li>
             <li><Link to="/boutique" onClick={toggleMenu}>BOUTIQUE</Link></li>
-            <li><Link to="/contact" onClick={toggleMenu}>CONTACTEZ-NOUS</Link></li>
             <li>
+                <a
+                  href="https://wa.me/21655037733"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={toggleMenu}
+                >
+                  CONTACTEZ-NOUS
+                </a>
+              </li>
+                          <li>
               <Link to="/cart" onClick={toggleMenu} className="cart-icon">
                 <Badge badgeContent={cartCount} color="primary">
                   <ShoppingCartIcon />

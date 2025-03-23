@@ -127,7 +127,7 @@ const Header = () => {
                 user?.id ? (
                   <>
                     <Button onClick={handleMenuOpen}>
-                      <AccountCircleIcon />
+                      <AccountCircleIcon style={{ color: '#ff4081' }}/>
                     </Button>
                     <Menu
                       anchorEl={anchorEl}

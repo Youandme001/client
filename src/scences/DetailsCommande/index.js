@@ -57,7 +57,7 @@ const DetailsCommande =()=> {
         <div className="content-container">
             <Container maxWidth="sm" sx={{ marginTop: '100px' , marginBottom: '100px'}}>
                 <Typography variant="h4" gutterBottom>
-                Insérer votre les informations
+                Veuillez saisir vos informations
                 </Typography>
                 <form onSubmit={handleUpdate}>
                     <Grid container spacing={2}>

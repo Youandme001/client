@@ -47,7 +47,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        &copy; 2024 Soins de la Peau Glowy. Tous droits réservés.
+        &copy; 2024 Glowy Cosmetics. Tous droits réservés.
       </div>
     </footer>
   );

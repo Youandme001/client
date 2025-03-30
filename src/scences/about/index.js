@@ -11,20 +11,18 @@ const AboutUs = () => {
     <div class="container">
         <div class="about-header">
             <h2>QUI SOMMES-NOUS ?</h2>
-            <p>Bienvenue chez Glowy Skin Care - là où les parfums délicieux rencontrent l'excellence des soins de la peau.</p>
+        
         </div>
         <div class="about-content">
-            <p>Chez Glowy, nous croyons en l'essence des fragrances exquises et des produits de beauté de qualité supérieure. Notre mission est de vous offrir une expérience sensorielle inoubliable à travers notre luxueuse collection de produits cosmétiques unisexe.</p>
+            <p>Chez Glowy, nous croyons que la beauté naît de l’intérieur et se reflète dans chaque éclat naturel. </p>
+            <p>Nous sommes une marque de produits de beauté bio, dédiée à révéler votre lumière intérieure avec des soins respectueux de la peau et de l’environnement. Chaque formule est soigneusement pensée pour nourrir, revitaliser et sublimer votre beauté naturelle, en harmonie avec la nature.</p>
+            <p>Nos produits sont conçus pour ceux qui osent briller sans compromis, en offrant des soins puissants, simples et 100% naturels. Nous avons créé Glowy pour que chaque personne puisse vivre un moment de bien-être authentique, à chaque application.</p>
+            <p>Rejoignez-nous dans ce voyage vers une beauté éclatante, naturelle et sans artifice. Parce que vous méritez de briller, naturellement.</p>
             <h3>Notre Engagement</h3>
-            <p>Nous sommes fiers de présenter notre toute nouvelle collection de produits cosmétiques unisexe, une gamme somptueuse de parfums OUD conçus pour elle et lui. Notre engagement envers votre bien-être est au cœur de tout ce que nous faisons :</p>
-            <ul>
-                <li>0% Paraben</li>
-                <li>0% Alcool</li>
-                <li>0% Sulfate</li>
-            </ul>
-            <p>Chez Glowy, nous nous engageons à créer des produits qui respectent votre peau et l'environnement. Notre formulation sans compromis garantit une expérience de beauté saine et durable.</p>
-            <p>Rejoignez-nous sur nos plateformes sociales pour rester informé des dernières tendances, offres spéciales et événements exclusifs. Chez Glowy, nous vous invitons à découvrir le monde envoûtant des parfums exquis et des soins de la peau raffinés.</p>
-            <p>Bienvenue dans notre univers olfactif, où chaque instant est une célébration de la beauté et de l'élégance. Glowy - où les parfums envoûtants rencontrent l'excellence des soins de la peau.</p>
+            <p>Chez Glowy, nous créons des soins bio, 100% naturels, pour respecter pleinement votre peau. 
+                Nos produits sont conçus avec des ingrédients de qualité, pour vous offrir une beauté saine et respectueuse. Nous croyons en la transparence et l'authenticité à chaque application.
+
+                Glowy incarne une beauté éthique, durable et authentique.</p>
         </div>
     </div>
 </section>

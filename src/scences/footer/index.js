@@ -11,9 +11,13 @@ function Footer() {
     <footer className="footer">
       <div className="container footer-content">
         <div className="footer-section about">
-          <h3>Soins de la Peau Glowy</h3>
-          <p>Votre parcours vers une peau plus saine et plus heureuse commence ici.</p>
-          <p> Faites confiance à notre approche naturelle de la beauté.</p>
+          {/* <h3>Soins de la Peau Glowy</h3> */}
+          <h3>Glowy Cosmetics: L'éclat en toi </h3>
+            <p>Laissez votre éclat intérieur s'exprimer.</p>
+            <p>Ici commence un voyage où la beauté se réinvente.</p> 
+            <p>Notre approche naturelle réveille ce que vous avez de plus précieux :</p> 
+            <p> votre lumière. Chaque soin est une invitation à briller avec confiance.</p> 
+            <p> Osez rayonner, naturellement.</p>
         </div>
         <div className="footer-section links">
           <h3>Liens Rapides</h3>
@@ -29,14 +33,14 @@ function Footer() {
           <p>Connectez-vous avec nous sur les réseaux sociaux</p><p>
                  pour les dernières mises à jour.</p>
           <div className="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61574626418563 " target="_blank" rel="noopener noreferrer" className="social-icon"><FacebookIcon /></a>
+            <a href="https://www.facebook.com/profile.php?id=61574626418563" target="_blank" rel="noopener noreferrer" className="social-icon"><FacebookIcon /></a>
             <a href="https://www.instagram.com/glowy_by_nawres/?fbclid=IwZXh0bgNhZW0CMTEAAR02z8uMChgRaXPTNMZCQOwIFau_xuL-zWkBlJMCQGxfRsgj6oSrj-XzQng_aem_mRv9aJHdRTY89MP2nZDn1g " target="_blank" rel="noopener noreferrer" className="social-icon"><InstagramIcon /></a>
           </div>
         </div>
         <div className="footer-section contact">
           <h3>Informations de Contact</h3>
           <ul>
-            <li><LocationOnIcon /> Adresse: 08 rue de l'Inde lafayette tunis 1002</li>
+            <li><LocationOnIcon /> Adresse: 08 rue de l'Inde lafayette tunis 1002</li>
             <li><PhoneIcon /> Téléphone: 55036636 / 55037070</li>
             <li><EmailIcon /> Email: glowy.nawressbriki@gmail.com</li>
           </ul>

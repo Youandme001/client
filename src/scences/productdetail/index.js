@@ -94,9 +94,9 @@ const ProductDetail = () => {
   <p className="price">Prix: {product.price} DT</p>
   <div className="description">
     <p>Description: {product.description}</p>
-    <p>Volume: {product.volume}</p>
-    <p>Désignation: {product.designation}</p>
-    <p>Propriétés Cosmétiques: {product.propertiesCosmetics}</p>
+    {/* <p>Volume: {product.volume}</p> */}
+    {/* <p>Désignation: {product.designation}</p>
+    <p>Propriétés Cosmétiques: {product.propertiesCosmetics}</p> */}
   </div>
   <button onClick={handleAddToCart} className="add-to-cart-btn">Ajouter au panier</button>
 </div>

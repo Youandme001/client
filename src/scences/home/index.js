@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
-import backgroundImage from './Background.jpg'; // Add your static image here
+import backgroundImage from './background.jpg'; // Add your static image here
 
 function HomePage() {
   const [products, setProducts] = useState([]);

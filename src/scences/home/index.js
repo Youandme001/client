@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './home.css';
 import { Box } from '@mui/material';
-import backgroundVideo1 from './background1.mp4';
-import backgroundVideo2 from './background2.mp4';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
+import backgroundImage from './background.jpg'; // Add your static image here
 
 function HomePage() {
   const [products, setProducts] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState(backgroundVideo1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,10 +18,7 @@ function HomePage() {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-
-        // ✅ Filter only products with volume > 0
         const availableProducts = data.data.filter(product => product.volume > 0);
-        
         setProducts(availableProducts);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -48,12 +43,10 @@ function HomePage() {
         imageUrl: product.images.length > 0 ? product.images[0].filepath : '',
         quantity: 1,
       };
-
       cartItems.push(newCartItem);
     }
 
     localStorage.setItem('panier', JSON.stringify(cartItems));
-
     toast.success('Produit ajouté au panier avec succès!', {
       position: "top-center",
       autoClose: 3000,
@@ -69,38 +62,22 @@ function HomePage() {
     navigate(`/productdetail/${productId}`);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev === backgroundVideo1 ? backgroundVideo2 : backgroundVideo1));
-    }, 15000); // Switch every 15 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div>
       <main>
-        <section id="home" className="banner">
-          <Box sx={{ marginTop: '40px', '@media (min-width: 781px)': { marginTop: '-60px' } }}>
-            <Box sx={{ position: 'relative', overflow: 'hidden', width: '100%', paddingBottom: '56.25%' }}>
-              <video
-                autoPlay
-                muted
-                key={currentVideo} // Ensures the video resets when switching
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'cover',
-                }}
-              >
-                <source src={currentVideo} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </Box>
+        <section 
+          id="home" 
+          className="banner"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '60vh',
+            width: '100%',
+          }}
+        >
+          <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* You can put a title or tagline here if you want */}
           </Box>
         </section>
 
@@ -125,7 +102,7 @@ function HomePage() {
               </div>
             ))
           ) : (
-            <p className="no-products">Aucun produit disponible</p> // ✅ Message if no products available
+            <p className="no-products">Aucun produit disponible</p>
           )}
         </section>
       </main>

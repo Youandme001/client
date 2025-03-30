@@ -29,14 +29,14 @@ function Footer() {
           <p>Connectez-vous avec nous sur les réseaux sociaux</p><p>
                  pour les dernières mises à jour.</p>
           <div className="social-icons">
-            <a href="https://www.facebook.com/youandmetunisia" target="_blank" rel="noopener noreferrer" className="social-icon"><FacebookIcon /></a>
-            <a href="https://www.instagram.com/i_said_yass?igsh=MWI4dmFpdnVwdmMybQ%3D%3D" target="_blank" rel="noopener noreferrer" className="social-icon"><InstagramIcon /></a>
+            <a href="https://www.facebook.com/profile.php?id=61574626418563 " target="_blank" rel="noopener noreferrer" className="social-icon"><FacebookIcon /></a>
+            <a href="https://www.instagram.com/glowy_by_nawres/?fbclid=IwZXh0bgNhZW0CMTEAAR02z8uMChgRaXPTNMZCQOwIFau_xuL-zWkBlJMCQGxfRsgj6oSrj-XzQng_aem_mRv9aJHdRTY89MP2nZDn1g " target="_blank" rel="noopener noreferrer" className="social-icon"><InstagramIcon /></a>
           </div>
         </div>
         <div className="footer-section contact">
           <h3>Informations de Contact</h3>
           <ul>
-            <li><LocationOnIcon /> Adresse: Rue bouraoui zaanouni Jawhara sousse 4000</li>
+            <li><LocationOnIcon /> Adresse: 08 rue de l'Inde lafayette tunis 1002</li>
             <li><PhoneIcon /> Téléphone: 55036636 / 55037070</li>
             <li><EmailIcon /> Email: glowy.nawressbriki@gmail.com</li>
           </ul>

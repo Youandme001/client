@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'http://51.75.207.39:4000';
+export const API_BASE_URL = 'https://api.glowy.boutique';

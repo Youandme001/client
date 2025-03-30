@@ -64,23 +64,15 @@ function HomePage() {
 
   return (
     <div>
-      <main>
-        <section 
+      <main style={{ margin: 0, padding: 0 }}>
+      <section 
           id="home" 
-          className="banner"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '60vh',
-            width: '100%',
-          }}
+          className="responsive-banner"
         >
-          <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}> */}
             {/* You can put a title or tagline here if you want */}
-          </Box>
+          {/* </Box> */}
         </section>
-
         <section id="shop" className="shop-section">
           {products.length > 0 ? (
             products.map((product) => (

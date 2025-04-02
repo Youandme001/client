@@ -17,10 +17,11 @@ const Commande = () => {
   const [userId, setUserId] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const shippingCost = 8;
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('panier')) || [];
     setCartItems(storedCartItems);
+    
 
     // ✅ Get userId from context first, then fallback to localStorage
     const storedToken = localStorage.getItem('token');
@@ -44,13 +45,20 @@ const Commande = () => {
   }, [user, navigate]);
 
   const calculateTotalPrice = () => {
-    return cartItems.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0).toFixed(2);
+    const total = cartItems.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0);
+    return total.toFixed(2).replace('.', ',');
   };
+  
 
   const getFormattedDateTime = () => {
     const now = new Date();
     return now.toISOString().slice(0, 19).replace("T", " ");
   };
+  const totalWithShipping = () => {
+    const productTotal = parseFloat(calculateTotalPrice().replace(',', '.'));
+    return (productTotal + shippingCost).toFixed(2).replace('.', ',');
+  };
+  
   const handleDelete = (cartItemId) => {
       const updatedCartItems = cartItems.filter(item => item.cartItemId !== cartItemId);
       setCartItems(updatedCartItems);
@@ -80,11 +88,12 @@ const Commande = () => {
           productId: item.productId,
           quantity: item.quantity,
         })),
-        totalPrice: calculateTotalPrice(),
+        totalPrice: Number(
+          calculateTotalPrice().replace(',', '.')
+        ),
         commandeDate: getFormattedDateTime(),
       };
-
-      console.log(token);
+      console.log(commandeData);
       const res = await axios.post(`${API_BASE_URL}/commande/create`, commandeData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -178,9 +187,41 @@ const Commande = () => {
                         </Card>
                       ))}
                     </Grid>
-              <Grid item xs={12}>
-            <Typography variant="body1">Total des produits: {calculateTotalPrice()} DT</Typography>
-          </Grid>
+                    
+                    <Grid item xs={12}>
+                      <Card elevation={2} sx={{ padding: 2, backgroundColor: '#f9f9f9' }}>
+                        <Typography variant="subtitle1" gutterBottom sx={{ color: '#555' }}>
+                          Détail du paiement :
+                        </Typography>
+                        <Grid container spacing={1}>
+                          <Grid item xs={6}>
+                            <Typography variant="body2" color="text.secondary">Total des produits :</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography variant="body2" align="right">{calculateTotalPrice()} DT</Typography>
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Typography variant="body2" color="text.secondary">Frais de livraison :</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography variant="body2" align="right">{shippingCost} DT</Typography>
+                          </Grid>
+
+                          <Grid item xs={12}>
+                            <Typography
+                              variant="h6"
+                              align="right"
+                              sx={{ fontWeight: 'bold', marginTop: 1 }}
+                            >
+                              Total à payer : {totalWithShipping()} DT
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Card>
+                    </Grid>
+
+
           <Grid item xs={12}>
             <Button type="button" variant="contained" color="primary" fullWidth onClick={handleSubmit}>
               Soumettre la commande

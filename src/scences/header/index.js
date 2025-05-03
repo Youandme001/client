@@ -1,3 +1,5 @@
+// ✅ Header.js (Fully updated version to match your layout in desktop and mobile)
+
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../components/img/logo.png';
@@ -19,31 +21,22 @@ const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
-    // ✅ Update user data from localStorage dynamically
     const updateUserData = () => {
       const storedToken = localStorage.getItem('token');
       const storedId = localStorage.getItem('id');
       setToken(storedToken);
       setId(storedId);
-
-      // ✅ If the user exists but not in context, update it
-      if (!user && storedId) {
-        setUser({ id: storedId });
-      }
+      if (!user && storedId) setUser({ id: storedId });
     };
-
     updateUserData();
 
-    // ✅ Update cart count from localStorage
     const updateCartCount = () => {
       const storedCartItems = JSON.parse(localStorage.getItem('panier')) || [];
       setCartCount(storedCartItems.length);
     };
-
     updateCartCount();
     const intervalId = setInterval(updateCartCount, 1000);
 
-    // ✅ Handle Scroll Hide/Show
     let lastScrollY = window.pageYOffset;
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset;
@@ -51,7 +44,6 @@ const Header = () => {
       lastScrollY = currentScrollY;
     };
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(intervalId);
@@ -59,11 +51,7 @@ const Header = () => {
   }, [user, setUser]);
 
   const checkLogin = () => {
-    if (token) {
-      navigate(`/userprofile/${id}`);
-    } else {
-      navigate('/login');
-    }
+    token ? navigate(`/userprofile/${id}`) : navigate('/login');
   };
 
   const logout = () => {
@@ -75,84 +63,47 @@ const Header = () => {
     navigate('/');
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
+  const toggleMenu = () => setMenuOpen(!menuOpen);
   const handleMenuOpen = (event) => {
-    if (user?.email) {
-      setAnchorEl(event.currentTarget);
-    }
-    else {
-      navigate('/login');
-    }
+    if (user?.email) setAnchorEl(event.currentTarget);
+    else navigate('/login');
   };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  const handleMenuClose = () => setAnchorEl(null);
 
   return (
     <header id="main-header" className={`transparent-header ${visible ? '' : 'hidden'}`}>
       <div className="header-container">
-        <img src={logo} alt="Glowy Skin Care Logo" className="logo" />
-        <button id="menu-toggle" className="menu-toggle" onClick={toggleMenu}>
-          <MenuIcon />
-        </button>
+        <img src={logo} alt="Logo" className="logo" />
 
-        <nav>
+        <nav className="nav-wrapper">
           <ul className={`nav-menu ${menuOpen ? 'open' : ''}`}>
             <li><Link to="/" onClick={toggleMenu}>ACCUEIL</Link></li>
             <li><Link to="/about" onClick={toggleMenu}>À PROPOS</Link></li>
             <li><Link to="/boutique" onClick={toggleMenu}>BOUTIQUE</Link></li>
-            <li>
-                <a
-                  href="https://wa.me/21655037733"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={toggleMenu}
-                >
-                  CONTACTEZ-NOUS
-                </a>
-              </li>
-                          <li>
-              <Link to="/cart" onClick={toggleMenu} className="cart-icon">
-                <Badge badgeContent={cartCount} color="primary">
-                  <ShoppingCartIcon />
-                </Badge>
-              </Link>
-            </li>
-            <li>
-              {token ? (
-                user?.id ? (
-                  <>
-                    <Button onClick={handleMenuOpen}>
-                      <AccountCircleIcon style={{ color: '#ff4081' }}/>
-                    </Button>
-                    <Menu
-                      anchorEl={anchorEl}
-                      open={Boolean(anchorEl)}
-                      onClose={handleMenuClose}
-                    >
-                      <MenuItem onClick={() => { handleMenuClose(); navigate(`/userprofile/${id}`); }}>
-                        Mon Profil
-                      </MenuItem>
-                      <MenuItem onClick={logout}>Déconnexion</MenuItem>
-                    </Menu>
-                  </>
-                ) : (
-                  <Button onClick={checkLogin}>
-                    <AccountCircleIcon />
-                  </Button>
-                )
-              ) : (
-                <Button onClick={checkLogin}>
-                  <AccountCircleIcon />
-                </Button>
-              )}
-            </li>
+            <li><a href="https://wa.me/21655037733" target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>CONTACTEZ-NOUS</a></li>
+            {/* <li className="mobile-only"> */}
+              <Button onClick={checkLogin}><AccountCircleIcon /></Button>
+            {/* </li> */}
           </ul>
         </nav>
+
+        <div className="header-icons">
+          <Link to="/cart" className="icon-link">
+            <Badge badgeContent={cartCount} color="primary">
+              <ShoppingCartIcon />
+            </Badge>
+          </Link>
+          {/* <Button onClick={handleMenuOpen} className="icon-link">
+            <AccountCircleIcon />
+          </Button>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+            <MenuItem onClick={() => { handleMenuClose(); navigate(`/userprofile/${id}`); }}>Mon Profil</MenuItem>
+            <MenuItem onClick={logout}>Déconnexion</MenuItem>
+          </Menu> */}
+          <button id="menu-toggle" className="menu-toggle" onClick={toggleMenu}>
+            <MenuIcon />
+          </button>
+        </div>
       </div>
     </header>
   );

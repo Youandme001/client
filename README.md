@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Glowy — Boutique en ligne
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Boutique de la marque **Glowy** (gloss, coffrets, soins) : catalogue, panier, commande avec ou sans compte, paiement à la livraison partout en Tunisie, suivi des commandes.
 
-## Available Scripts
+API : [Youandme001/backend](https://github.com/Youandme001/backend) · Back-office : [Youandme001/admin](https://github.com/Youandme001/admin)
 
-In the project directory, you can run:
+## Parcours
 
-### `npm start`
+- **Accueil** : nouveautés, coffret mis en avant, catégories, engagements (livraison, paiement à la réception).
+- **Boutique** : filtres par catégorie, recherche, tri par prix ou nouveauté.
+- **Fiche produit** : photos, description, propriétés, stock restant, quantité, produits associés.
+- **Panier** (tiroir latéral + page) : quantités limitées au stock, prix toujours relus depuis l'API.
+- **Commande** : formulaire d'adresse avec les 24 gouvernorats, validation, commande invitée ou avec compte (adresse pré-remplie), confirmation.
+- **Compte** : historique et statut des commandes, informations, mot de passe.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React 18 (Create React App) · Material UI 5 · React Router 6 · Axios
 
-### `npm test`
+## Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+  api/          client axios (jeton, messages d'erreur en français) + appels
+  context/      AuthContext (session cliente), CartContext (panier : ids + quantités)
+  components/   Header, Footer, CartDrawer, ProductCard, AddressFields, OrderSummary…
+  pages/        Home, Shop, ProductDetail, Cart, Checkout, OrderConfirmed, Login, Register, Account, About
+  utils/        prix en DT, statuts, gouvernorats
+  theme.js      thème Glowy (Playfair Display + Inter, noir / rose)
+```
 
-### `npm run build`
+## Démarrage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+cp .env.example .env     # REACT_APP_API_URL=http://localhost:4000
+npm start                # http://localhost:3000
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Le total payé est recalculé par l'API à partir des prix en base ; le montant affiché dans le panier n'est qu'indicatif.
